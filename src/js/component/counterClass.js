@@ -19,7 +19,7 @@ class CounterC extends React.Component {
 		};
 		//this.temporizador = this.temporizador.bind(this);
 	}
-
+	//var cuenta = parseInt(window.prompt("Elija un valor para la cuenta regresiva"));
 	//aquí irán funciones y cambios de propiedades
 	componentDidMount() {
 		setInterval(() => {
@@ -45,6 +45,12 @@ class CounterC extends React.Component {
 	resetCounter = () => {
 		if (this.state.on) {
 			this.setState({ counter: 0 });
+		}
+	};
+
+	reverseCounter = () => {
+		if (this.state.on) {
+			this.setState({ counter: this.state.counter - 1 });
 		}
 	};
 
@@ -91,6 +97,11 @@ class CounterC extends React.Component {
 							onClick={this.stopCounter.bind(this)}
 							className="btn-danger">
 							{"Detener Contador"}
+						</button>
+						<button
+							onClick={this.reverseCounter.bind(this)}
+							className="btn-danger">
+							{"Cuenta Regresiva"}
 						</button>
 					</div>
 				</div>
