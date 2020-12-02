@@ -1,0 +1,19 @@
+@import "~bootstrap/scss/bootstrap.scss";
+
+
+
+.counterClock{
+    text-align: center;
+    background: black;
+    
+}
+
+.counterClock div{
+    display: inline-block;
+    font-size: 80px;
+    line-height: 80px;
+    background: #101010;
+    color:white;
+    padding: 10px;
+    margin: 3px;
+}
