@@ -5,6 +5,7 @@ import React, { Component } from "react";
 
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
+import { useEffect, useState } from "react";
 //import "./icons.js";
 
 //creating class Counter
@@ -19,10 +20,12 @@ class CounterC extends React.Component {
 		};
 		//this.temporizador = this.temporizador.bind(this);
 	}
-	//var cuenta = parseInt(window.prompt("Elija un valor para la cuenta regresiva"));
+	//let cuenta = window.prompt("Elija un valor para la cuenta regresiva");
+	//let cuentaInt = parseInt(cuenta);
 	//aquí irán funciones y cambios de propiedades
+
 	componentDidMount() {
-		setInterval(() => {
+		var id = setInterval(() => {
 			//const four = Math.floor((this.state.counter / 1000) % 10);
 			//const three = Math.floor((this.state.counter / 100) % 10);
 			//	const two = Math.floor((this.state.counter / 10) % 10);
@@ -54,13 +57,17 @@ class CounterC extends React.Component {
 		}
 	};
 
-	stopCounter() {
-		if (this.state.on) {
-			this.setState({ on: false });
-			clearInterval(handlde);
-			let handlde = 0;
-		}
-	}
+	stopCounter = () => {
+		this.setState({ on: false });
+		clearInterval(handle);
+		let handle = 0;
+		const stoper = useEffect(() => {
+			var id = setInterval(() => {
+				this.setState({ counter: this.state.counter });
+			}, []);
+			return () => clearInterval(id);
+		}, []);
+	};
 	//************ */
 
 	render() {
@@ -93,7 +100,7 @@ class CounterC extends React.Component {
 							className="btn-warning">
 							{"Reiniciar Contador"}
 						</button>
-						<button
+						{/* <button
 							onClick={this.stopCounter.bind(this)}
 							className="btn-danger">
 							{"Detener Contador"}
@@ -102,7 +109,7 @@ class CounterC extends React.Component {
 							onClick={this.reverseCounter.bind(this)}
 							className="btn-danger">
 							{"Cuenta Regresiva"}
-						</button>
+						</button> */}
 					</div>
 				</div>
 			</React.Fragment>
